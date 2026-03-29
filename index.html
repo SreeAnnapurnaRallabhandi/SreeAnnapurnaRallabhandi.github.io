@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sree Annapurna Rallabhandi — Data Scientist & ML Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #f8f6f1;
+    --surface: #ffffff;
+    --ink: #1a1a18;
+    --muted: #6b6b65;
+    --accent: #1a3a5c;
+    --accent2: #c8873a;
+    --border: #e0ddd6;
+    --tag-bg: #eef2f7;
+    --tag-fg: #1a3a5c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(248,246,241,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--accent);
+    letter-spacing: 0.01em;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted);
+    font-size: 0.875rem; font-weight: 500; letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 100px 48px 60px;
+    max-width: 1200px; margin: 0 auto;
+    position: relative;
+  }
+  .hero-content { max-width: 680px; }
+  .hero-eyebrow {
+    font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 32px; height: 2px; background: var(--accent2);
+  }
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 1.15rem; font-weight: 300;
+    color: var(--muted); margin: 24px 0 40px;
+    max-width: 520px; line-height: 1.75;
+  }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    padding: 13px 28px; border-radius: 4px;
+    text-decoration: none; font-weight: 600;
+    font-size: 0.875rem; letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: #142d4a; transform: translateY(-1px); }
+  .btn-outline {
+    border: 1.5px solid var(--accent); color: var(--accent);
+    padding: 13px 28px; border-radius: 4px;
+    text-decoration: none; font-weight: 600;
+    font-size: 0.875rem; letter-spacing: 0.04em;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
+
+  .hero-decor {
+    position: absolute; right: 48px; top: 50%;
+    transform: translateY(-50%);
+    width: 320px; height: 320px;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0.5;
+  }
+  .hero-decor::before {
+    content: ''; position: absolute;
+    width: 240px; height: 240px;
+    border: 1.5px solid var(--border); border-radius: 50%;
+  }
+  .hero-decor::after {
+    content: ''; position: absolute;
+    width: 160px; height: 160px;
+    border: 1.5px solid var(--accent2); border-radius: 50%;
+    opacity: 0.4;
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 48px; max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent2); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before {
+    content: ''; width: 24px; height: 2px; background: var(--accent2);
+  }
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    color: var(--ink); line-height: 1.2;
+    margin-bottom: 48px;
+  }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
+  }
+  .about-text p {
+    color: var(--muted); font-size: 1rem; line-height: 1.85;
+    margin-bottom: 20px;
+  }
+  .about-text p strong { color: var(--ink); font-weight: 600; }
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px; border: 1px solid var(--border);
+  }
+  .stat-box {
+    padding: 28px 24px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem; color: var(--accent);
+    display: block; margin-bottom: 4px;
+  }
+  .stat-label { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; }
+
+  /* SKILLS */
+  .skills-section { background: var(--surface); }
+  .skills-wrap { max-width: 1200px; margin: 0 auto; padding: 100px 48px; }
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; border: 1px solid var(--border);
+  }
+  .skill-cat {
+    padding: 32px 28px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .skill-cat-title {
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent2); margin-bottom: 16px;
+  }
+  .skill-list { list-style: none; }
+  .skill-list li {
+    font-size: 0.9rem; color: var(--ink);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .skill-list li:last-child { border-bottom: none; }
+  .skill-list li::before {
+    content: ''; width: 5px; height: 5px;
+    border-radius: 50%; background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; border: 1px solid var(--border);
+  }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 36px 28px;
+    display: flex; flex-direction: column;
+    transition: transform 0.2s;
+    text-decoration: none; color: inherit;
+  }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(26,58,92,0.08); }
+  .project-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3rem; color: var(--border);
+    line-height: 1; margin-bottom: 20px;
+  }
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem; color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .project-desc {
+    font-size: 0.875rem; color: var(--muted);
+    line-height: 1.7; flex: 1; margin-bottom: 20px;
+  }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    background: var(--tag-bg); color: var(--tag-fg);
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 4px 10px; border-radius: 2px;
+  }
+  .project-link {
+    margin-top: 20px; font-size: 0.8rem;
+    font-weight: 600; color: var(--accent);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .project-link::after { content: '→'; transition: transform 0.2s; }
+  .project-card:hover .project-link::after { transform: translateX(4px); }
+
+  /* CONTACT */
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .contact-text p { color: var(--muted); line-height: 1.8; margin-bottom: 32px; }
+  .contact-links { display: flex; flex-direction: column; gap: 12px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none; color: var(--ink);
+    font-size: 0.925rem; font-weight: 500;
+    padding: 16px 20px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: all 0.2s;
+  }
+  .contact-link:hover {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #fff;
+  }
+  .contact-link .link-icon {
+    font-size: 1.1rem; width: 20px; text-align: center;
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%; padding: 14px 16px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; color: var(--ink);
+    outline: none; transition: border-color 0.2s;
+    resize: vertical;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus { border-color: var(--accent); }
+  .contact-form textarea { min-height: 120px; }
+  .contact-form button {
+    background: var(--accent); color: #fff;
+    border: none; padding: 14px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s;
+    align-self: flex-start;
+  }
+  .contact-form button:hover { background: #142d4a; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.8rem; color: var(--muted);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+  h1 { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-sub { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-ctas { animation: fadeUp 0.6s 0.3s ease both; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .hero, section { padding: 80px 24px; }
+    .hero-decor { display: none; }
+    .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+    .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Sree A. Rallabhandi</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div style="max-width:1200px;margin:0 auto;position:relative;">
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Data Science & AI/ML</div>
+      <h1>Building <em>intelligent</em><br/>systems that scale</h1>
+      <p class="hero-sub">
+        I'm <strong>Sree Annapurna Rallabhandi</strong> — a Data Scientist and ML Engineer
+        passionate about transforming raw data into predictive intelligence, from classical
+        machine learning to large language models.
+      </p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">View My Work</a>
+        <a href="https://github.com/SreeAnnapurnaRallabhandi" target="_blank" class="btn-outline">GitHub Profile</a>
+      </div>
+    </div>
+    <div class="hero-decor"></div>
+  </section>
+</div>
+
+<hr class="divider"/>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <h2>Driven by data,<br/>guided by curiosity</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm a <strong>graduate-level Data Scientist</strong> with deep expertise in the full ML lifecycle —
+        from data wrangling and feature engineering to model training, evaluation, and deployment.
+        I thrive at the intersection of statistics, engineering, and business impact.
+      </p>
+      <p>
+        My work spans <strong>supervised and unsupervised learning</strong>, <strong>deep learning</strong>,
+        <strong>NLP</strong>, and cutting-edge <strong>LLM / RAG architectures</strong>. I also build
+        scalable data pipelines using Spark and Databricks, and communicate insights through
+        compelling dashboards in Tableau and Power BI.
+      </p>
+      <p>
+        I'm currently seeking <strong>Data Science, ML Engineer, and AI Research roles</strong> where
+        I can drive meaningful impact through rigorous, production-quality work.
+      </p>
+    </div>
+    <div>
+      <div class="about-stats">
+        <div class="stat-box">
+          <span class="stat-num">10+</span>
+          <span class="stat-label">ML Projects Completed</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">8+</span>
+          <span class="stat-label">Tools & Frameworks</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">3+</span>
+          <span class="stat-label">End-to-End Pipelines</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">2</span>
+          <span class="stat-label">Core Languages</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- SKILLS -->
+<div class="skills-section">
+  <div class="skills-wrap" id="skills">
+    <div class="section-label">Skills</div>
+    <h2>Technologies &<br/>tools I work with</h2>
+    <div class="skills-grid">
+      <div class="skill-cat">
+        <div class="skill-cat-title">Languages</div>
+        <ul class="skill-list">
+          <li>Python</li>
+          <li>SQL</li>
+        </ul>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-title">ML / Deep Learning</div>
+        <ul class="skill-list">
+          <li>PyTorch</li>
+          <li>TensorFlow / Keras</li>
+          <li>Scikit-learn</li>
+          <li>HuggingFace Transformers</li>
+          <li>LangChain / LLMs</li>
+        </ul>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-title">Data & Analytics</div>
+        <ul class="skill-list">
+          <li>Pandas / NumPy</li>
+          <li>Apache Spark</li>
+          <li>Databricks</li>
+          <li>Tableau</li>
+          <li>Power BI</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <h2>Selected work &<br/>case studies</h2>
+  <div class="projects-grid">
+    <a href="https://github.com/SreeAnnapurnaRallabhandi" class="project-card">
+      <div class="project-num">01</div>
+      <div class="project-title">Customer Churn Prediction</div>
+      <p class="project-desc">
+        End-to-end ML pipeline to predict customer churn. Built feature engineering, trained XGBoost with
+        SHAP explainability, and deployed as a REST API. Achieved 93% AUC-ROC on holdout data.
+      </p>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">XGBoost</span>
+        <span class="tag">SHAP</span>
+        <span class="tag">Scikit-learn</span>
+      </div>
+      <div class="project-link">View Project</div>
+    </a>
+    <a href="https://github.com/SreeAnnapurnaRallabhandi" class="project-card">
+      <div class="project-num">02</div>
+      <div class="project-title">Sentiment Analysis with Transformers</div>
+      <p class="project-desc">
+        Fine-tuned a BERT-based model on domain-specific product reviews using HuggingFace Transformers.
+        Outperformed baseline by 14% F1. Packaged and deployed as a FastAPI microservice.
+      </p>
+      <div class="project-tags">
+        <span class="tag">PyTorch</span>
+        <span class="tag">HuggingFace</span>
+        <span class="tag">BERT</span>
+        <span class="tag">FastAPI</span>
+      </div>
+      <div class="project-link">View Project</div>
+    </a>
+    <a href="https://github.com/SreeAnnapurnaRallabhandi" class="project-card">
+      <div class="project-num">03</div>
+      <div class="project-title">LLM-Powered RAG Q&A Assistant</div>
+      <p class="project-desc">
+        Built a Retrieval-Augmented Generation pipeline using LangChain, FAISS vector store, and OpenAI API
+        to answer natural language questions over custom document collections with high accuracy.
+      </p>
+      <div class="project-tags">
+        <span class="tag">LangChain</span>
+        <span class="tag">FAISS</span>
+        <span class="tag">OpenAI</span>
+        <span class="tag">RAG</span>
+      </div>
+      <div class="project-link">View Project</div>
+    </a>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <h2>Let's work<br/>together</h2>
+  <div class="contact-inner">
+    <div>
+      <div class="contact-text">
+        <p>
+          I'm actively looking for <strong>Data Science, ML Engineering, and AI Research</strong> roles.
+          Whether you have an opportunity, a project idea, or just want to connect — I'd love to hear from you.
+        </p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:sree.rallabhandi@gmail.com" class="contact-link">
+          <span class="link-icon">✉</span> sree.rallabhandi@gmail.com
+        </a>
+        <a href="https://github.com/SreeAnnapurnaRallabhandi" target="_blank" class="contact-link">
+          <span class="link-icon">⌥</span> github.com/SreeAnnapurnaRallabhandi
+        </a>
+        <a href="https://www.linkedin.com/in/sreeannapurnarallabhandi" target="_blank" class="contact-link">
+          <span class="link-icon">in</span> linkedin.com/in/sreeannapurnarallabhandi
+        </a>
+      </div>
+    </div>
+    <div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <input type="text" placeholder="Your Name" required/>
+        <input type="email" placeholder="Your Email" required/>
+        <textarea placeholder="Your Message"></textarea>
+        <button type="submit">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Sree Annapurna Rallabhandi</span>
+  <span>Data Science · AI/ML · Open to Opportunities</span>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  btn.textContent = 'Message Sent ✓';
+  btn.style.background = '#2e7d52';
+  setTimeout(() => {
+    btn.textContent = 'Send Message →';
+    btn.style.background = '';
+    e.target.reset();
+  }, 3000);
+}
+</script>
+</body>
+</html>
