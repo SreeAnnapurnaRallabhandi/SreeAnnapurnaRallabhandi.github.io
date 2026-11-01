@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sreeannapurna Rallabhandi | AI & Data Engineer</title>
-  <meta name="description" content="Portfolio of Sreeannapurna Rallabhandi, AI and Data Engineer with 6+ years in data and AI across AWS and GCP." />
+  <title>Sreeannapurna Rallabhandi | Data Analytics & AI</title>
+  <meta name="description" content="Portfolio of Sreeannapurna Rallabhandi: 6+ years in data analytics, analytics engineering, machine learning, and AI engineering. Open to Data Analyst, Analytics Engineer, Data Scientist, ML Engineer, and AI Engineer roles." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -72,7 +72,18 @@
     .menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     /* ============ HERO ============ */
-    .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 68px; }
+    .hero {
+      position: relative; overflow: hidden; color: #fff;
+      padding: 140px 0 96px;
+      background: linear-gradient(135deg, #0f172a 0%, #164e63 55%, #4c1d95 100%);
+    }
+    .hero::before, .hero::after {
+      content: ''; position: absolute; border-radius: 50%; pointer-events: none;
+    }
+    .hero::before { width: 520px; height: 520px; right: -160px; top: -180px; background: radial-gradient(circle, rgba(103, 232, 249, 0.18), transparent 70%); }
+    .hero::after { width: 420px; height: 420px; left: -140px; bottom: -220px; background: radial-gradient(circle, rgba(196, 181, 253, 0.16), transparent 70%); }
+    .hero .container { position: relative; z-index: 1; }
+    .hero-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 56px; align-items: center; }
     .hero-tag {
       display: inline-flex; align-items: center; gap: 8px;
       font-family: var(--mono); font-size: 0.85rem; color: var(--cyan);
@@ -104,6 +115,35 @@
     }
     .socials a:hover { color: var(--cyan); border-color: var(--cyan); transform: translateY(-3px); }
     .socials svg { width: 20px; height: 20px; }
+
+    /* Hero sits on a dark color band, so its elements use light variants */
+    .hero .hero-tag { color: #a5f3fc; border-color: rgba(255, 255, 255, 0.25); background: rgba(255, 255, 255, 0.08); }
+    .hero .gradient-text { background: linear-gradient(135deg, #67e8f9, #c4b5fd); -webkit-background-clip: text; background-clip: text; }
+    .hero .typed { color: rgba(255, 255, 255, 0.75); }
+    .hero .typed .cursor { color: #67e8f9; }
+    .hero p.lead { color: rgba(255, 255, 255, 0.82); }
+    .hero .btn-primary { background: #fff; color: #0f172a; }
+    .hero .btn-primary:hover { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); }
+    .hero .btn-outline { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.4); }
+    .hero .btn-outline:hover { border-color: #fff; background: rgba(255, 255, 255, 0.08); }
+    .hero .socials a { color: rgba(255, 255, 255, 0.85); border-color: rgba(255, 255, 255, 0.3); }
+    .hero .socials a:hover { color: #fff; border-color: #fff; }
+
+    /* Profile card beside the intro */
+    .hero-card {
+      background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(8px); border-radius: 20px; padding: 32px 28px; text-align: center;
+    }
+    .avatar {
+      width: 96px; height: 96px; margin: 0 auto 16px; border-radius: 50%;
+      display: grid; place-items: center; font-size: 2rem; font-weight: 800; color: #0f172a;
+      background: linear-gradient(135deg, #67e8f9, #c4b5fd); box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.1);
+    }
+    .hero-card h2 { font-size: 1.15rem; font-weight: 700; }
+    .hero-card .now { color: rgba(255, 255, 255, 0.75); font-size: 0.92rem; margin: 4px 0 20px; }
+    .hero-card .label { font-family: var(--mono); font-size: 0.75rem; color: #a5f3fc; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+    .role-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+    .role-chips span { font-size: 0.8rem; padding: 5px 12px; border-radius: 999px; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2); }
 
     /* ============ SECTIONS ============ */
     section { padding: 100px 0; }
@@ -198,7 +238,8 @@
 
     /* ============ RESPONSIVE ============ */
     @media (max-width: 860px) {
-      .about-grid, .edu-grid { grid-template-columns: 1fr; }
+      .about-grid, .edu-grid, .hero-grid { grid-template-columns: 1fr; }
+      .hero { padding: 112px 0 72px; }
       .menu-btn { display: block; }
       .nav-links {
         position: fixed; top: 68px; left: 0; right: 0; flex-direction: column; gap: 0;
@@ -243,13 +284,14 @@
 
   <!-- ============ HERO ============ -->
   <header class="hero" id="home">
-    <div class="container">
+    <div class="container hero-grid">
+      <div>
       <div class="hero-tag"><span class="dot"></span> Open to opportunities · Dallas, TX</div>
       <h1>Hi, I'm <span class="gradient-text">Sreeannapurna</span><br />Rallabhandi</h1>
       <div class="typed"><span id="typed"></span><span class="cursor">|</span></div>
       <p class="lead">
-        AI & Data Engineer with 6+ years across data pipelines, applied machine learning, and AI applications on AWS and GCP.
-        Today I build agentic AI analytics systems that turn data into decisions.
+        Data and AI professional with 6+ years across analytics, data engineering, and machine learning.
+        I turn data into decisions with SQL, Power BI, and Snowflake, and build ML models and agentic AI applications on AWS and GCP.
       </p>
       <div class="btns">
         <a href="#projects" class="btn btn-primary">View My Work →</a>
@@ -267,6 +309,17 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
         </a>
       </div>
+      </div>
+      <aside class="hero-card">
+        <div class="avatar">SR</div>
+        <h2>Sreeannapurna Rallabhandi</h2>
+        <p class="now">AI Engineer at Invences Inc · Dallas, TX</p>
+        <p class="label">Open to</p>
+        <div class="role-chips">
+          <span>Data Analyst</span><span>Analytics Engineer</span><span>Data Scientist</span>
+          <span>ML Engineer</span><span>AI Engineer</span>
+        </div>
+      </aside>
     </div>
   </header>
 
@@ -278,8 +331,9 @@
       <div class="about-grid">
         <div class="about-text reveal">
           <p>
-            I have <strong>6+ years of experience in data and AI</strong>, building pipelines, ML models, and data platforms on
-            <strong>AWS and GCP</strong>. I'm currently an <strong>AI Engineer on Agentic AI Analytics at Invences Inc</strong>,
+            I have <strong>6+ years of experience across data analytics, data engineering, and machine learning</strong>:
+            dashboards and KPI reporting in <strong>Power BI and Tableau</strong>, data models in <strong>Snowflake, BigQuery, and Redshift</strong>,
+            and ML and LLM applications on <strong>AWS and GCP</strong>. I'm currently an <strong>AI Engineer on Agentic AI Analytics at Invences Inc</strong>,
             where I work on multi-agent systems, observability, and the platform that teams use every day.
           </p>
           <p>
