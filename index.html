@@ -11,15 +11,15 @@
   <style>
     /* ============ THEME ============ */
     :root {
-      --bg: #0a0e17;
-      --bg-alt: #0f1522;
-      --card: #141b2b;
-      --card-hover: #1a2337;
-      --border: #222c42;
-      --text: #e6eaf2;
-      --muted: #8b95ab;
-      --cyan: #22d3ee;
-      --purple: #a78bfa;
+      --bg: #f8fafc;
+      --bg-alt: #f1f5f9;
+      --card: #ffffff;
+      --card-hover: #fbfdff;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --muted: #475569;
+      --cyan: #0e7490;
+      --purple: #7c3aed;
       --gradient: linear-gradient(135deg, var(--cyan), var(--purple));
       --radius: 14px;
       --mono: 'JetBrains Mono', monospace;
@@ -42,14 +42,14 @@
     .bg-glow {
       position: fixed; inset: 0; z-index: -1; pointer-events: none;
       background:
-        radial-gradient(600px circle at 10% 10%, rgba(34, 211, 238, 0.08), transparent 60%),
-        radial-gradient(600px circle at 90% 30%, rgba(167, 139, 250, 0.08), transparent 60%);
+        radial-gradient(600px circle at 10% 10%, rgba(8, 145, 178, 0.07), transparent 60%),
+        radial-gradient(600px circle at 90% 30%, rgba(124, 58, 237, 0.06), transparent 60%);
     }
 
     /* ============ NAVBAR ============ */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(10, 14, 23, 0.75);
+      background: rgba(248, 250, 252, 0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid transparent;
       transition: border-color 0.3s;
@@ -76,7 +76,7 @@
     .hero-tag {
       display: inline-flex; align-items: center; gap: 8px;
       font-family: var(--mono); font-size: 0.85rem; color: var(--cyan);
-      border: 1px solid rgba(34, 211, 238, 0.3); background: rgba(34, 211, 238, 0.06);
+      border: 1px solid rgba(8, 145, 178, 0.3); background: rgba(8, 145, 178, 0.06);
       padding: 6px 14px; border-radius: 999px; margin-bottom: 24px;
     }
     .dot { width: 8px; height: 8px; background: #34d399; border-radius: 50%; box-shadow: 0 0 10px #34d399; animation: pulse 2s infinite; }
@@ -93,8 +93,8 @@
       padding: 12px 26px; border-radius: 10px; font-weight: 600; font-size: 0.95rem;
       transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
     }
-    .btn-primary { background: var(--gradient); color: #0a0e17; }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(34, 211, 238, 0.25); }
+    .btn-primary { background: var(--gradient); color: #fff; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(8, 145, 178, 0.25); }
     .btn-outline { border: 1px solid var(--border); background: var(--card); }
     .btn-outline:hover { border-color: var(--cyan); transform: translateY(-2px); }
     .socials { display: flex; gap: 14px; margin-top: 34px; }
@@ -130,7 +130,7 @@
     }
     .t-item:first-child::before { background: var(--cyan); box-shadow: 0 0 14px var(--cyan); }
     .t-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 26px; transition: 0.25s; }
-    .t-card:hover { border-color: rgba(34, 211, 238, 0.4); background: var(--card-hover); }
+    .t-card:hover { border-color: rgba(8, 145, 178, 0.4); background: var(--card-hover); }
     .t-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 16px; }
     .t-head h3 { font-size: 1.15rem; font-weight: 600; }
     .t-date { font-family: var(--mono); font-size: 0.82rem; color: var(--purple); }
@@ -148,18 +148,18 @@
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
       background: var(--gradient); transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
     }
-    .project:hover { transform: translateY(-6px); border-color: rgba(167, 139, 250, 0.4); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35); }
+    .project:hover { transform: translateY(-6px); border-color: rgba(124, 58, 237, 0.35); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); }
     .project:hover::before { transform: scaleX(1); }
     .project-icon { font-size: 2rem; margin-bottom: 14px; }
     .badge {
-      display: inline-block; font-size: 0.75rem; font-weight: 600; color: #fbbf24;
-      background: rgba(251, 191, 36, 0.1); border: 1px solid rgba(251, 191, 36, 0.3);
+      display: inline-block; font-size: 0.75rem; font-weight: 600; color: #b45309;
+      background: #fef3c7; border: 1px solid #fcd34d;
       padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; width: fit-content;
     }
     .project h3 { font-size: 1.2rem; margin-bottom: 10px; }
     .project p { color: var(--muted); font-size: 0.94rem; flex-grow: 1; }
     .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
-    .tag { font-family: var(--mono); font-size: 0.75rem; color: var(--cyan); background: rgba(34, 211, 238, 0.08); padding: 4px 10px; border-radius: 6px; }
+    .tag { font-family: var(--mono); font-size: 0.75rem; color: var(--cyan); background: rgba(8, 145, 178, 0.08); padding: 4px 10px; border-radius: 6px; }
     .project-links { display: flex; gap: 18px; font-size: 0.9rem; font-weight: 500; }
     .project-links a { color: var(--muted); transition: color 0.2s; }
     .project-links a:hover { color: var(--cyan); }
@@ -180,7 +180,7 @@
     .edu-card .t-date { display: block; margin-top: 6px; }
     .sub-title { font-size: 1.2rem; margin-bottom: 18px; color: var(--text); }
     .cert { display: flex; align-items: center; gap: 14px; }
-    .cert-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--gradient); display: grid; place-items: center; color: #0a0e17; font-weight: 800; flex-shrink: 0; }
+    .cert-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--gradient); display: grid; place-items: center; color: #fff; font-weight: 800; flex-shrink: 0; }
 
     /* Contact */
     .contact-box {
@@ -253,7 +253,8 @@
       </p>
       <div class="btns">
         <a href="#projects" class="btn btn-primary">View My Work →</a>
-        <a href="resume.pdf" class="btn btn-outline" target="_blank">Download Resume</a>
+        <a href="resume-data-analyst.pdf" class="btn btn-outline" target="_blank">Resume · Data Analyst</a>
+        <a href="resume-ai-ml-engineer.pdf" class="btn btn-outline" target="_blank">Resume · AI/ML Engineer</a>
       </div>
       <div class="socials">
         <a href="https://github.com/SreeAnnapurnaRallabhandi" target="_blank" aria-label="GitHub">
@@ -321,9 +322,9 @@
             <div class="t-head"><h3>Graduate Research Assistant</h3><span class="t-date">Sep 2023 – May 2025</span></div>
             <p class="t-company">University of North Texas</p>
             <ul>
-              <li>Built Severus DataHub on the Hermes DataHub project (Airspace Hazard Alerting Service).</li>
-              <li>Unified UAV telemetry, Operational Intent, and airspace-constraint data for AAM research.</li>
-              <li>Researched UAV flight-path anomaly detection in Python.</li>
+              <li>Built Severus DataHub on the Hermes DataHub project (Airspace Hazard Alerting Service), unifying UAV telemetry, Operational Intent, and airspace-constraint data.</li>
+              <li>Built pipelines processing 2M+ records daily from 10+ sources (Airflow, BigQuery), cutting analysis turnaround from six hours to 15 minutes.</li>
+              <li>Trained UAV flight-anomaly detection models reaching up to 96% validation accuracy.</li>
             </ul>
           </div>
         </div>
@@ -332,9 +333,10 @@
             <div class="t-head"><h3>Data Analyst II</h3><span class="t-date">Mar 2022 – Aug 2023</span></div>
             <p class="t-company">Forsys Inc</p>
             <ul>
-              <li>Built Python and SQL ingestion pipelines for production analytics and downstream ML, with validation rules for data quality.</li>
+              <li>Analyzed 150M daily transaction records and found unreported billing gaps that leadership acted on.</li>
+              <li>Built Power BI sales dashboards tracking 15 KPIs, and funnel analysis that contributed to an 8% increase in conversion.</li>
               <li>Automated reconciliation and exception workflows, cutting a manual process from four hours to five minutes.</li>
-              <li>Tightened CRM data-quality controls and test workflows, contributing to 15% better CRM accuracy and 60% fewer data-quality tickets.</li>
+              <li>Refined CRM data-quality controls, contributing to 15% better CRM accuracy and 60% fewer data-quality tickets.</li>
             </ul>
           </div>
         </div>
@@ -343,9 +345,9 @@
             <div class="t-head"><h3>Data Analyst</h3><span class="t-date">Jan 2020 – Dec 2021</span></div>
             <p class="t-company">Vidcentum Software</p>
             <ul>
-              <li>Developed Python, SQL, and PySpark pipelines consolidating IoT and application sources into governed reporting datasets.</li>
-              <li>Added incremental ingestion and SQL validation checks that reduced reporting latency and caught bad IoT data before it reached reports.</li>
-              <li>Published Snowflake and Redshift datasets supporting 75+ operational KPIs across product lines.</li>
+              <li>Built Power BI and Tableau dashboards tracking 75 business metrics, raising stakeholder adoption from 68% to 94%.</li>
+              <li>Built a unified Snowflake and Redshift data layer across 15+ systems, cutting reporting latency from 48 hours to under four.</li>
+              <li>Added automated data-quality checks at ingestion, reducing on-call incidents by 55%.</li>
             </ul>
           </div>
         </div>
@@ -405,7 +407,6 @@
     <div class="container">
       <p class="section-label">04. skills</p>
       <h2 class="section-title reveal">My toolkit</h2>
-      <!-- TODO: add or remove skills to match your resume -->
       <div class="skills-grid">
         <div class="skill-group reveal">
           <h3>🧠 AI & Agents</h3>
@@ -421,16 +422,32 @@
           </div>
         </div>
         <div class="skill-group reveal">
+          <h3>📊 Analytics & BI</h3>
+          <div class="skill-list">
+            <span class="skill">SQL</span><span class="skill">Power BI</span><span class="skill">Tableau</span>
+            <span class="skill">KPI Development</span><span class="skill">R</span><span class="skill">Excel / VBA</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
           <h3>🔧 Data Engineering</h3>
           <div class="skill-list">
-            <span class="skill">Python</span><span class="skill">SQL</span><span class="skill">Data Pipelines</span>
-            <span class="skill">Data Platforms</span><span class="skill">Observability</span>
+            <span class="skill">Python</span><span class="skill">Snowflake</span><span class="skill">BigQuery</span>
+            <span class="skill">Redshift</span><span class="skill">PySpark</span><span class="skill">Airflow</span>
+            <span class="skill">Kafka</span><span class="skill">Data Quality</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h3>📈 Machine Learning</h3>
+          <div class="skill-list">
+            <span class="skill">scikit-learn</span><span class="skill">TensorFlow</span><span class="skill">PyTorch</span>
+            <span class="skill">Vertex AI</span><span class="skill">Anomaly Detection</span><span class="skill">Docker</span>
           </div>
         </div>
         <div class="skill-group reveal">
           <h3>🛠️ Tools</h3>
           <div class="skill-list">
-            <span class="skill">Git</span><span class="skill">GitHub Actions</span><span class="skill">Jupyter</span>
+            <span class="skill">Git</span><span class="skill">GitHub Actions</span><span class="skill">Jupyter</span><span class="skill">FastAPI</span>
+            <span class="skill">Grafana</span>
           </div>
         </div>
       </div>
@@ -461,10 +478,11 @@
         <div class="reveal">
           <h3 class="sub-title">📜 Certifications</h3>
           <!-- TODO: link each certification to its credential URL -->
-          <div class="edu-card cert"><div class="cert-icon">A</div><div><h3>Claude Code</h3><p>Anthropic</p></div></div>
-          <div class="edu-card cert"><div class="cert-icon">A</div><div><h3>Claude API</h3><p>Anthropic</p></div></div>
-          <div class="edu-card cert"><div class="cert-icon">A</div><div><h3>Claude with AWS Bedrock</h3><p>Anthropic</p></div></div>
-          <div class="edu-card cert"><div class="cert-icon">A</div><div><h3>Claude MVP</h3><p>Anthropic</p></div></div>
+          <div class="edu-card cert"><div class="cert-icon">A</div><div><h3>Building with the Claude API</h3><p>Anthropic · Jul 2026</p></div></div>
+          <div class="edu-card cert"><div class="cert-icon">A</div><div><h3>Claude Code in Action</h3><p>Anthropic · Jul 2026</p></div></div>
+          <div class="edu-card cert"><div class="cert-icon">A</div><div><h3>Introduction to Model Context Protocol</h3><p>Anthropic · Jul 2026</p></div></div>
+          <div class="edu-card cert"><div class="cert-icon">A</div><div><h3>Claude with Amazon Bedrock</h3><p>Anthropic · Jul 2026</p></div></div>
+          <div class="edu-card cert"><div class="cert-icon">I</div><div><h3>Business Analytics and Optimization</h3><p>IIT Delhi · Jun 2022</p></div></div>
         </div>
       </div>
     </div>
@@ -476,7 +494,7 @@
       <div class="contact-box reveal">
         <p class="section-label">06. what's next?</p>
         <h2 class="section-title" style="margin-bottom:16px">Let's work together</h2>
-        <p>I'm open to AI Engineer and Data Engineer roles in Dallas or anywhere I'd relocate for. My inbox is always open.</p>
+        <p>I'm open to Data Analyst, Analytics Engineer, Data Scientist, ML Engineer, and AI Engineer roles in Dallas or anywhere I'd relocate for. My inbox is always open.</p>
         <div class="btns">
           <a href="mailto:sarallabhandi@gmail.com" class="btn btn-primary">Say Hello ✉️</a>
           <a href="https://www.linkedin.com/in/sreeannapurnarallabhandi" target="_blank" class="btn btn-outline">Connect on LinkedIn</a>
@@ -491,7 +509,7 @@
 
   <script>
     // Typing effect in hero
-    const roles = ['AI Engineer', 'Data Engineer', 'Agentic AI Builder', 'AWS & GCP Practitioner'];
+    const roles = ['AI Engineer', 'Data Analyst', 'ML Engineer', 'Analytics Engineer', 'Data Scientist'];
     const typedEl = document.getElementById('typed');
     let roleIndex = 0, charIndex = 0, deleting = false;
     function type() {
