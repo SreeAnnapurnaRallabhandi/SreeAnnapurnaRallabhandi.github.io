@@ -513,7 +513,7 @@
         </p>
       </div>
       <div class="contact-links">
-        <a href="mailto:sree.rallabhandi@gmail.com" class="contact-link">
+        <a href="mailto:rsreeannapurna@gmail.com" class="contact-link">
           <span class="link-icon">✉</span> rsreeannapurna@gmail.com
         </a>
         <a href="https://github.com/SreeAnnapurnaRallabhandi" target="_blank" class="contact-link">
@@ -526,9 +526,9 @@
     </div>
     <div>
       <form class="contact-form" onsubmit="handleSubmit(event)">
-        <input type="text" placeholder="Your Name" required/>
-        <input type="email" placeholder="Your Email" required/>
-        <textarea placeholder="Your Message"></textarea>
+        <input type="text" name="name" placeholder="Your Name" required/>
+        <input type="email" name="email" placeholder="Your Email" required/>
+        <textarea name="message" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message →</button>
       </form>
     </div>
@@ -536,21 +536,26 @@
 </section>
 
 <footer>
-  <span>© 2025 Sree Annapurna Rallabhandi</span>
+  <span>© 2026 Sree Annapurna Rallabhandi</span>
   <span>Data Science · AI/ML · Open to Opportunities</span>
 </footer>
 
 <script>
+// Static site, so no server to send mail: open the visitor's email app with the message prefilled
 function handleSubmit(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('button');
-  btn.textContent = 'Message Sent ✓';
-  btn.style.background = '#2e7d52';
-  setTimeout(() => {
-    btn.textContent = 'Send Message →';
-    btn.style.background = '';
-    e.target.reset();
-  }, 3000);
+  const form = e.target;
+  const name = form.elements.name.value;
+  const email = form.elements.email.value;
+  const message = form.elements.message.value;
+  const subject = `Portfolio contact from ${name}`;
+  const body = `${message}\n\n— ${name} (${email})`;
+  window.location.href = 'mailto:rsreeannapurna@gmail.com'
+    + '?subject=' + encodeURIComponent(subject)
+    + '&body=' + encodeURIComponent(body);
+  const btn = form.querySelector('button');
+  btn.textContent = 'Opening your email app…';
+  setTimeout(() => { btn.textContent = 'Send Message →'; }, 3000);
 }
 </script>
 </body>
